@@ -1,0 +1,371 @@
+body { 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav {
+    position: relative;
+}
+
+/* DESKTOP NAVIGATION */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* MOBILE MENU BUTTON */
+.menu-btn {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        width: 200px;
+        box-shadow: 0 4px 6px rgba(253, 249, 0, 0.1);
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 10;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+    background: #3a0ca3;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* ENROLLMENT SECTION */
+.enrollment {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(to right, #845a0a, #120336); 
+    color: #fff;
+}
+
+.text-content {
+    max-width: 45%;
+    text-align: left;
+    margin-left: 5%; 
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: slideInDown 1s ease-out forwards;
+}
+
+.text-content h1 {
+    font-size: 3rem;
+    margin: 0px;
+}
+
+.text-content h3 {
+    font-size: 20px;
+    margin: 0px;
+    font-style: italic;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.enroll-btn {
+    display: inline-block;
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 40px;
+    margin-top: 20px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.enroll-btn:hover {
+    background: darkred;
+}
+
+/* IMAGE CONTENT */
+.image-content {
+    max-width: 45%;
+    height: auto;
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+}
+
+.image-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeIn 1.2s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+
+.enrollment-image {
+    width: 100%;
+    height: auto;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .text-content {
+        text-align: center;
+        max-width: 100%;
+    }
+    .enrollment {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .text-content h1 {
+        font-size: 2rem;
+    }
+    .text-content h3 {
+        font-size: 16px;
+    }
+    .image-content {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-content h1 {
+        font-size: 1.5rem;
+    }
+    .text-content h3 {
+        font-size: 14px;
+    }
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #fddb3a;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+/* LOGIN MODAL */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content label {
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.modal-content button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #3a0ca3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #2d0061;
+}
+
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000; /* Ensure it's on top */
+    display: none; /* Hidden by default */
+    min-width: 15rem; /* Minimum width */
+    padding: 1rem 0; /* Padding */
+    margin: 0; /* Remove default margin */
+    font-size: 0.9375rem; /* Font size */
+    color: #595d69; /* Text color */
+    text-align: left; /* Align text to the left */
+    list-style: none; /* Remove bullet points */
+    background-color: #fff; /* Background color */
+    background-clip: padding-box; /* Clip background to padding box */
+    border: 0 solid rgba(0, 0, 0, 0.1); /* Border */
+    border-radius: 0.25rem; /* Rounded corners */
+}
+
+.dropdown-menu li {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.dropdown-menu li a {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    text-decoration: none;
+    color: inherit; /* Inherit color from .dropdown-menu */
+    box-sizing: border-box;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f0f0f0;  /* Add hover effect */
+}
+
+@media (max-width: 768px) { 
+    .dropdown-menu {
+        right: 10px; /* Adjust the right margin for mobile */
+    }
+}
